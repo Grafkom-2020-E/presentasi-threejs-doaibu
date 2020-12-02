@@ -1,6 +1,8 @@
 let renderer, camera;
 
 const controls = {
+    cameraX: 0,
+    cameraY: 0,
     cameraZ: 5,
     normalMap: 0,
     normalScale: 1,
@@ -8,6 +10,8 @@ const controls = {
 
 const addGuiMeshBasic = (controls) => {
     let gui = new dat.GUI();
+    gui.add(controls, 'cameraX', -5.0, 5.0);
+    gui.add(controls, 'cameraY', -5.0, 5.0);
     gui.add(controls, 'cameraZ', 0, 10.0);
     gui.add(controls, 'normalMap', {
         None: 0,
@@ -63,11 +67,13 @@ const main = () => {
 
         material.needsUpdate = true;
         material.normalScale = new THREE.Vector2(controls.normalScale, controls.normalScale);
+        camera.position.x = controls.cameraX;
+        camera.position.y = controls.cameraY;
         camera.position.z = controls.cameraZ;
 
         rotateMesh(sphere);
         rotateMesh(box);
-        renderer.render(scene,camera);
+        renderer.render(scene, camera);
     }
     animate();
 }

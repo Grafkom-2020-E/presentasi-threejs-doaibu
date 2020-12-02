@@ -10,7 +10,6 @@ const addGuiMeshBasic = (gui, controls) => {
         None: 0,
         Dissolve: 1,
         Wood: 2
-
     });
 }
 
@@ -55,6 +54,8 @@ const main = () => {
     
     const animate = () => {
         requestAnimationFrame(animate);
+        camera.position.x = controls.cameraX;
+        camera.position.y = controls.cameraY;
         camera.position.z = controls.cameraZ;
         controls.setMaterialToThis(sphere.material);
         controls.setMaterialToThis(box.material);

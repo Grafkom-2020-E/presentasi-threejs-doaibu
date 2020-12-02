@@ -1,4 +1,6 @@
 function Control(material){
+    this.cameraX = 0;
+    this.cameraY = 0;
     this.cameraZ = 5;
     this.transparent = material.transparent;
     this.transparentOptions = {
@@ -44,6 +46,8 @@ function Control(material){
 
     this.newGui = () => {
         let gui = new dat.GUI();
+        gui.add(this, 'cameraX', -5.0, 5.0).listen();
+        gui.add(this, 'cameraY', -5.0, 5.0).listen();
         gui.add(this, 'cameraZ', 0, 10.0).listen();
 
         let material = gui.addFolder('material');
