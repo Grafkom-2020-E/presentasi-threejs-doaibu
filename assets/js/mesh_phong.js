@@ -6,9 +6,12 @@ const controls = {
     cameraZ: 5,
     color: 0x2194ce,
     emissive: 0x0,
+    specular: 0xb2b2b2,
+    shininess: 100,
     map: 1,
     envMap: 1,
     wireframe: false,
+    flatShading: false,
     reflectivity: 1,
     refractionRatio: 0.98,
     combine: THREE.MultiplyOperation,
@@ -23,6 +26,8 @@ const addGuiMeshBasic = (controls) => {
 
     gui.addColor(controls, 'color').listen();
     gui.addColor(controls, 'emissive').listen();
+    gui.addColor(controls, 'specular').listen();
+    gui.add(controls, 'shininess', 0, 100);
 
     gui.add(controls, 'map', {
         Dissolve: 1,
@@ -35,7 +40,7 @@ const addGuiMeshBasic = (controls) => {
 }
 
 const main = () => {
-    let material = new THREE.MeshLambertMaterial();
+    let material = new THREE.MeshPhongMaterial();
     let dissolve_texture = new THREE.TextureLoader().load('assets/textures/dissolve.png');
     let wood_texture = new THREE.TextureLoader().load('assets/textures/wood.png');
 
@@ -96,6 +101,9 @@ const main = () => {
 
         material.color.setHex(controls.color);
         material.emissive.setHex(controls.emissive);
+        material.specular.setHex(controls.specular);
+        material.shininess = controls.shininess; 
+        
         if (controls.map == 0) {
             material.map = null;
         } else if (controls.map == 1) {
@@ -110,6 +118,7 @@ const main = () => {
             material.envMap = reflectionCube;
         }
 
+        material.flatShading = controls.flatShading;
         material.wireframe = controls.wireframe;
         material.reflectivity = controls.reflectivity;
         material.refractionRatio = controls.refractionRatio;
