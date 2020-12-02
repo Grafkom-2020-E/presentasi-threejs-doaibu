@@ -77,7 +77,7 @@ const main = () => {
     const meshBg = new THREE.Mesh( new THREE.PlaneBufferGeometry( 4000, 2000 ), materialBg );
     meshBg.position.set( 0, 0, - 500 );
     scene.add(meshBg);
-    
+
     const reflectionCube = new THREE.CubeTextureLoader()
     .setPath( 'assets/textures/SwedishRoyalCastle/' )
     .load( [ 'px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg' ] );
@@ -100,6 +100,12 @@ const main = () => {
     
     const animate = () => {
         requestAnimationFrame(animate);
+
+        const time = Date.now() * 0.00025;
+        const ox = ( time * - 0.01 * mapBg.repeat.x ) % 1;
+        const oy = ( time * - 0.01 * mapBg.repeat.y ) % 1;
+
+        mapBg.offset.set( ox, oy );
 
         material.color.setHex(controls.color);
         material.emissive.setHex(controls.emissive);

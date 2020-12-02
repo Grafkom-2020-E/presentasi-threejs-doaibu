@@ -105,6 +105,12 @@ const main = () => {
     const animate = () => {
         requestAnimationFrame(animate);
 
+        const time = Date.now() * 0.00025;
+        const ox = ( time * - 0.01 * mapBg.repeat.x ) % 1;
+        const oy = ( time * - 0.01 * mapBg.repeat.y ) % 1;
+
+        mapBg.offset.set( ox, oy );
+
         material.color.setHex(controls.color);
         material.emissive.setHex(controls.emissive);
         material.specular.setHex(controls.specular);
