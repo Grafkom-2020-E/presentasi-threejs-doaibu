@@ -7,6 +7,7 @@ const controls = {
     color: 0x2194ce,
     emissive: 0x0,
     map: 0,
+    envMap: 1,
     wireframe: false,
     reflectivity: 1,
     refractionRatio: 0.98,
@@ -97,7 +98,12 @@ const main = () => {
         } else if (controls.map == 2) {
             material.map = wood_texture;
         }
-        material.envMap = reflectionCube;
+
+        if (controls.envMap == 0) {
+            material.envMap = null;
+        } else if (controls.envMap == 1) {
+            material.envMap = reflectionCube;
+        }
 
         material.wireframe = controls.wireframe;
         material.reflectivity = controls.reflectivity;
