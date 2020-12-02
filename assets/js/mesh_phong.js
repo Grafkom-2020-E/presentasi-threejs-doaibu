@@ -29,7 +29,13 @@ const addGuiMeshBasic = (controls) => {
     gui.addColor(controls, 'specular').listen();
     gui.add(controls, 'shininess', 0, 100);
 
+    gui.add(controls, 'envMap', {
+        None: 0,
+        Refraction: 1,
+    });
+
     gui.add(controls, 'map', {
+        None: 0,
         Dissolve: 1,
         Wood: 2
     });
@@ -117,7 +123,8 @@ const main = () => {
         } else if (controls.envMap == 1) {
             material.envMap = reflectionCube;
         }
-
+        material.needsUpdate = true;
+        
         material.flatShading = controls.flatShading;
         material.wireframe = controls.wireframe;
         material.reflectivity = controls.reflectivity;
