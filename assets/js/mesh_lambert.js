@@ -83,7 +83,7 @@ const main = () => {
     .load( [ 'px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg' ] );
     reflectionCube.encoding = THREE.sRGBEncoding;
     reflectionCube.mapping = THREE.CubeRefractionMapping;
-    scene.background = reflectionCube;
+
     let geometry = new THREE.SphereGeometry(1, 32, 32);
     let sphere = new THREE.Mesh( geometry, material );
     sphere.position.x = -2.5;
