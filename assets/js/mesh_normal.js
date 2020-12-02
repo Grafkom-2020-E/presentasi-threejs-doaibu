@@ -6,19 +6,23 @@ const controls = {
     cameraZ: 5,
     normalMap: 0,
     normalScale: 1,
+    wireframe: false,
 }
 
 const addGuiMeshBasic = (controls) => {
     let gui = new dat.GUI();
-    gui.add(controls, 'cameraX', -5.0, 5.0);
-    gui.add(controls, 'cameraY', -5.0, 5.0);
-    gui.add(controls, 'cameraZ', 0, 10.0);
+    let camera = gui.addFolder('camera');
+    camera.add(controls, 'cameraX', -5.0, 5.0);
+    camera.add(controls, 'cameraY', -5.0, 5.0);
+    camera.add(controls, 'cameraZ', 0, 10.0);
+
     gui.add(controls, 'normalMap', {
         None: 0,
         Dissolve: 1,
         Wood: 2
     });
     gui.add(controls, 'normalScale', 0, 1);
+    gui.add(controls, 'wireframe');
 }
 const main = () => {
 
@@ -67,6 +71,7 @@ const main = () => {
 
         material.needsUpdate = true;
         material.normalScale = new THREE.Vector2(controls.normalScale, controls.normalScale);
+        material.wireframe = controls.wireframe;
         camera.position.x = controls.cameraX;
         camera.position.y = controls.cameraY;
         camera.position.z = controls.cameraZ;

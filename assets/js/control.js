@@ -46,9 +46,10 @@ function Control(material){
 
     this.newGui = () => {
         let gui = new dat.GUI();
-        gui.add(this, 'cameraX', -5.0, 5.0).listen();
-        gui.add(this, 'cameraY', -5.0, 5.0).listen();
-        gui.add(this, 'cameraZ', 0, 10.0).listen();
+        let camera = gui.addFolder('camera');
+        camera.add(this, 'cameraX', -5.0, 5.0).listen();
+        camera.add(this, 'cameraY', -5.0, 5.0).listen();
+        camera.add(this, 'cameraZ', 0, 10.0).listen();
 
         let material = gui.addFolder('material');
         material.add(this, 'transparent').onChange((value) => {
