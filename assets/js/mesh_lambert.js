@@ -6,8 +6,8 @@ const controls = {
     cameraZ: 5,
     color: 0x2194ce,
     emissive: 0x0,
-    map: 1,
-    envMap: 1,
+    map: 0,
+    envMap: 0,
     wireframe: false,
     reflectivity: 1,
     refractionRatio: 0.98,
@@ -24,10 +24,17 @@ const addGuiMeshBasic = (controls) => {
     gui.addColor(controls, 'color').listen();
     gui.addColor(controls, 'emissive').listen();
 
+    gui.add(controls, 'envMap', {
+        None: 0,
+        Refraction: 1,
+    });
+
     gui.add(controls, 'map', {
+        None: 0,
         Dissolve: 1,
         Wood: 2
     });
+    
     
     gui.add(controls, 'wireframe');
     gui.add(controls, 'reflectivity', 0, 1);
@@ -109,6 +116,7 @@ const main = () => {
         } else if (controls.envMap == 1) {
             material.envMap = reflectionCube;
         }
+        material.needsUpdate = true;
 
         material.wireframe = controls.wireframe;
         material.reflectivity = controls.reflectivity;
