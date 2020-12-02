@@ -8,14 +8,17 @@ const addGuiMeshBasic = (gui, controls) => {
     gui.addColor(controls, 'color').listen();
     gui.add(extraControls, 'texture', {
         None: 0,
-        Dissolve: 1
+        Dissolve: 1,
+        Wood: 2
+
     });
 }
 
 const main = () => {
 
     let material = new THREE.MeshBasicMaterial();
-    let texture = new THREE.TextureLoader().load('textures/dissolve.png');
+    let dissolve_texture = new THREE.TextureLoader().load('assets/textures/dissolve.png');
+    let wood_texture = new THREE.TextureLoader().load('assets/textures/wood.png');
 
     let controls = new Control(material);
 
@@ -62,9 +65,13 @@ const main = () => {
             box.material.map = null;
             plane.material.map = null;
         } else if (extraControls.texture == 1) {
-            sphere.material.map = texture;
-            box.material.map = texture;
-            plane.material.map = texture;
+            sphere.material.map = dissolve_texture;
+            box.material.map = dissolve_texture;
+            plane.material.map = dissolve_texture;
+        } else if (extraControls.texture == 2) {
+            sphere.material.map = wood_texture;
+            box.material.map = wood_texture;
+            plane.material.map = wood_texture;
         }
 
         sphere.material.needsUpdate = true;
