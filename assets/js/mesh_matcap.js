@@ -36,19 +36,7 @@ const main = () => {
 
     let geometry = new THREE.SphereGeometry(1, 32, 32);
     let sphere = new THREE.Mesh( geometry, material );
-    sphere.position.x = -2.5;
     scene.add( sphere );
-
-    let geometry1 = new THREE.BoxGeometry(1, 1, 1);
-    let box = new THREE.Mesh(geometry1, material);
-    box.position.x = 2.5;
-    scene.add(box);
-
-    let geometry2 = new THREE.PlaneGeometry(10000, 10000, 100, 100);
-    let plane = new THREE.Mesh(geometry2, material);
-    plane.rotation.x = -90 * Math.PI / 180;
-    plane.position.y = -100;
-    scene.add(plane);
 
     let directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
     directionalLight.position.set(1, 1, 2.6);
@@ -71,7 +59,6 @@ const main = () => {
         camera.position.z = controls.cameraZ;
 
         rotateMesh(sphere);
-        rotateMesh(box);
         renderer.render(scene, camera);
     }
     animate();
