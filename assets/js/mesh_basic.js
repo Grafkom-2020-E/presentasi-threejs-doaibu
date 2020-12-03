@@ -2,7 +2,8 @@ let renderer, camera;
 
 const extraControls = {
     texture: 0,
-    background: 0
+    background: 0,
+    wireframe: false
 }
 
 const addGuiMeshBasic = (gui, controls) => {
@@ -12,6 +13,7 @@ const addGuiMeshBasic = (gui, controls) => {
         Dissolve: 1,
         Wood: 2
     });
+    gui.add(extraControls, 'wireframe');
 }
 
 const main = () => {
@@ -107,6 +109,7 @@ const main = () => {
             plane.material.map = wood_texture;
         }
 
+        material.wireframe = extraControls.wireframe;
         sphere.material.needsUpdate = true;
         box.material.needsUpdate = true;
         plane.material.needsUpdate = true;
