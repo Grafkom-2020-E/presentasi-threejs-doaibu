@@ -132,67 +132,67 @@ function Control(material){
             NotEqual                :THREE.NotEqualDepth
         }).listen();
         material.add(this, 'depthWrite').listen();
-        material.add(this, 'stencilWrite').listen();
-        material.add(this, 'stencilWriteMask', 255, 255).listen();
-        material.add(this, 'stencilFunc',{
-            Always                  :THREE.AlwaysStencilFunc,
-            Never                   :THREE.NeverStencilFunc,
-            Less                    :THREE.LessStencilFunc,
-            Equal                   :THREE.EqualStencilFunc,
-            LessEqual               :THREE.LessEqualStencilFunc,
-            Greater                 :THREE.GreaterStencilFunc,
-            NotEqual                :THREE.NotEqualStencilFunc,
-            GreaterEqual            :THREE.GreaterEqualStencilFunc
-        }).listen();
-        material.add(this, 'stencilRef').listen();
-        material.add(this, 'stencilFuncMask', 255, 255).listen();
-        material.add(this, 'stencilFail',{
-            Keep                    :THREE.KeepStencilOp,
-            Zero                    :THREE.ZeroStencilOp,
-            Replace                 :THREE.ReplaceStencilOp,
-            Increment               :THREE.IncrementStencilOp,
-            Decrement               :THREE.DecrementStencilOp,
-            IncrementWrap           :THREE.IncrementWrapStencilOp,
-            DecrementWrap           :THREE.DecrementWrapStencilOp,
-            Invert                  :THREE.InvertStencilOp
-        }).listen();
-        material.add(this, 'stencilZFail',{
-            Keep                    :THREE.KeepStencilOp,
-            Zero                    :THREE.ZeroStencilOp,
-            Replace                 :THREE.ReplaceStencilOp,
-            Increment               :THREE.IncrementStencilOp,
-            Decrement               :THREE.DecrementStencilOp,
-            IncrementWrap           :THREE.IncrementWrapStencilOp,
-            DecrementWrap           :THREE.DecrementWrapStencilOp,
-            Invert                  :THREE.InvertStencilOp
-        }).listen();
-        material.add(this, 'stencilZPass',{
-            Keep                    :THREE.KeepStencilOp,
-            Zero                    :THREE.ZeroStencilOp,
-            Replace                 :THREE.ReplaceStencilOp,
-            Increment               :THREE.IncrementStencilOp,
-            Decrement               :THREE.DecrementStencilOp,
-            IncrementWrap           :THREE.IncrementWrapStencilOp,
-            DecrementWrap           :THREE.DecrementWrapStencilOp,
-            Invert                  :THREE.InvertStencilOp
-        }).listen();
+        // material.add(this, 'stencilWrite').listen();
+        // material.add(this, 'stencilWriteMask', 255, 255).listen();
+        // material.add(this, 'stencilFunc',{
+        //     Always                  :THREE.AlwaysStencilFunc,
+        //     Never                   :THREE.NeverStencilFunc,
+        //     Less                    :THREE.LessStencilFunc,
+        //     Equal                   :THREE.EqualStencilFunc,
+        //     LessEqual               :THREE.LessEqualStencilFunc,
+        //     Greater                 :THREE.GreaterStencilFunc,
+        //     NotEqual                :THREE.NotEqualStencilFunc,
+        //     GreaterEqual            :THREE.GreaterEqualStencilFunc
+        // }).listen();
+        // material.add(this, 'stencilRef').listen();
+        // material.add(this, 'stencilFuncMask', 255, 255).listen();
+        // material.add(this, 'stencilFail',{
+        //     Keep                    :THREE.KeepStencilOp,
+        //     Zero                    :THREE.ZeroStencilOp,
+        //     Replace                 :THREE.ReplaceStencilOp,
+        //     Increment               :THREE.IncrementStencilOp,
+        //     Decrement               :THREE.DecrementStencilOp,
+        //     IncrementWrap           :THREE.IncrementWrapStencilOp,
+        //     DecrementWrap           :THREE.DecrementWrapStencilOp,
+        //     Invert                  :THREE.InvertStencilOp
+        // }).listen();
+        // material.add(this, 'stencilZFail',{
+        //     Keep                    :THREE.KeepStencilOp,
+        //     Zero                    :THREE.ZeroStencilOp,
+        //     Replace                 :THREE.ReplaceStencilOp,
+        //     Increment               :THREE.IncrementStencilOp,
+        //     Decrement               :THREE.DecrementStencilOp,
+        //     IncrementWrap           :THREE.IncrementWrapStencilOp,
+        //     DecrementWrap           :THREE.DecrementWrapStencilOp,
+        //     Invert                  :THREE.InvertStencilOp
+        // }).listen();
+        // material.add(this, 'stencilZPass',{
+        //     Keep                    :THREE.KeepStencilOp,
+        //     Zero                    :THREE.ZeroStencilOp,
+        //     Replace                 :THREE.ReplaceStencilOp,
+        //     Increment               :THREE.IncrementStencilOp,
+        //     Decrement               :THREE.DecrementStencilOp,
+        //     IncrementWrap           :THREE.IncrementWrapStencilOp,
+        //     DecrementWrap           :THREE.DecrementWrapStencilOp,
+        //     Invert                  :THREE.InvertStencilOp
+        // }).listen();
         material.add(this, 'fog').listen();
-        material.add(this, 'polygonOffset').onChange((value) => {
-            if(value){
-                polygonOffsetOptionsFolderContext.show();
-                polygonOffsetOptionsFolderContext.open();
-            }else{
-                polygonOffsetOptionsFolderContext.hide();
-                polygonOffsetOptionsFolderContext.close();
-            }
-        }).listen();
-        let polygonOffsetOptionsFolderContext = material.addFolder('Polygon Offset Options');
-        polygonOffsetOptionsFolderContext.add(this.polygonOffsetOptions, 'polygonOffsetFactor', -10, 10).listen();
-        polygonOffsetOptionsFolderContext.add(this.polygonOffsetOptions, 'polygonOffsetUnits', -10, 10).listen();
-        polygonOffsetOptionsFolderContext.hide();
-        polygonOffsetOptionsFolderContext.close();
+        // material.add(this, 'polygonOffset').onChange((value) => {
+        //     if(value){
+        //         polygonOffsetOptionsFolderContext.show();
+        //         polygonOffsetOptionsFolderContext.open();
+        //     }else{
+        //         polygonOffsetOptionsFolderContext.hide();
+        //         polygonOffsetOptionsFolderContext.close();
+        //     }
+        // }).listen();
+        // let polygonOffsetOptionsFolderContext = material.addFolder('Polygon Offset Options');
+        // polygonOffsetOptionsFolderContext.add(this.polygonOffsetOptions, 'polygonOffsetFactor', -10, 10).listen();
+        // polygonOffsetOptionsFolderContext.add(this.polygonOffsetOptions, 'polygonOffsetUnits', -10, 10).listen();
+        // polygonOffsetOptionsFolderContext.hide();
+        // polygonOffsetOptionsFolderContext.close();
         material.add(this, 'premultipliedAlpha').listen();
-        material.add(this, 'dithering').listen();
+        // material.add(this, 'dithering').listen();
         material.add(this, 'shadowSide', {
             Null                    :null,
             Front                   :THREE.FrontSide,
