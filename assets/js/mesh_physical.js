@@ -49,6 +49,7 @@ const addGuiMeshBasic = (controls) => {
     });
 
     gui.add(controls, 'wireframe');
+    gui.add(controls, 'flatShading');
 }
 
 const main = () => {

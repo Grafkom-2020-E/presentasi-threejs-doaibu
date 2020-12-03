@@ -41,6 +41,7 @@ const addGuiMeshBasic = (controls) => {
     });
     
     gui.add(controls, 'wireframe');
+    gui.add(controls, 'flatShading');
     gui.add(controls, 'reflectivity', 0, 1);
     gui.add(controls, 'refractionRatio', 0, 1);
 

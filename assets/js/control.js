@@ -29,7 +29,6 @@ function Control(material){
     this.stencilFail = material.stencilFail;
     this.stencilZFail = material.stencilZFail;
     this.stencilZPass = material.stencilZPass;
-    this.flatShading = material.flatShading;
     this.fog = material.fog;
     this.polygonOffset = material.polygonOffset;
     this.polygonOffsetOptions = {
@@ -177,7 +176,6 @@ function Control(material){
             DecrementWrap           :THREE.DecrementWrapStencilOp,
             Invert                  :THREE.InvertStencilOp
         }).listen();
-        material.add(this, 'flatShading').listen();
         material.add(this, 'fog').listen();
         material.add(this, 'polygonOffset').onChange((value) => {
             if(value){
@@ -237,7 +235,6 @@ function Control(material){
         material.stencilFail = parseInt(this.stencilFail);
         material.stencilZFail = parseInt(this.stencilZFail);
         material.stencilZPass = parseInt(this.stencilZPass);
-        material.flatShading = this.flatShading;
         material.fog = this.fog;
         material.polygonOffset = this.polygonOffset;
         material.polygonOffsetFactor = this.polygonOffsetOptions.polygonOffsetFactor;

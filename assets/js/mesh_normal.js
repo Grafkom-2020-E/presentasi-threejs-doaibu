@@ -7,6 +7,7 @@ const controls = {
     normalMap: 0,
     normalScale: 1,
     wireframe: false,
+    flatShading: false,
 }
 
 const addGuiMeshBasic = (controls) => {
@@ -23,6 +24,7 @@ const addGuiMeshBasic = (controls) => {
     });
     gui.add(controls, 'normalScale', 0, 1);
     gui.add(controls, 'wireframe');
+    gui.add(controls, 'flatShading');
 }
 const main = () => {
 
@@ -69,12 +71,13 @@ const main = () => {
             material.normalMap = wood_texture;
         }
 
-        material.needsUpdate = true;
         material.normalScale = new THREE.Vector2(controls.normalScale, controls.normalScale);
         material.wireframe = controls.wireframe;
+        material.flatShading = controls.flatShading;
         camera.position.x = controls.cameraX;
         camera.position.y = controls.cameraY;
         camera.position.z = controls.cameraZ;
+        material.needsUpdate = true;
 
         rotateMesh(sphere);
         rotateMesh(box);
