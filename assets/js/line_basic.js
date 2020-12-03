@@ -46,26 +46,23 @@ const main = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    let geometry = new THREE.SphereGeometry(1,32,32);
-    let sphere = new THREE.Line( geometry, material );
-    sphere.computeLineDistances();
+    const geometry = new THREE.SphereGeometry(1, 32, 32);
+    const sphere = new THREE.Line( geometry, material );
     sphere.position.x = -2.5;
     scene.add( sphere );
 
-    let geometry1 = new THREE.BoxGeometry(1, 1, 1);
-    let box = new THREE.Line(geometry1, material);
-    box.computeLineDistances();
+    const geometry1 = new THREE.BoxGeometry(1, 1, 1);
+    const box = new THREE.Line(geometry1, material);
     box.position.x = 2.5;
     scene.add(box);
 
-    let geometry2 = new THREE.PlaneGeometry(10000, 10000, 100, 100);
-    let plane = new THREE.Line(geometry2, material);
-    plane.computeLineDistances();
+    const geometry2 = new THREE.PlaneGeometry(10000, 10000, 100, 100);
+    const plane = new THREE.Line(geometry2, material);
     plane.rotation.x = -90 * Math.PI / 180;
     plane.position.y = -100;
     scene.add(plane);
 
-    let directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
     directionalLight.position.set(1, 1, 2.6);
     scene.add( directionalLight );
     

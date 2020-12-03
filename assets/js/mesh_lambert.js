@@ -39,6 +39,12 @@ const addGuiMeshBasic = (controls) => {
     gui.add(controls, 'wireframe');
     gui.add(controls, 'reflectivity', 0, 1);
     gui.add(controls, 'refractionRatio', 0, 1);
+
+    gui.add(controls, 'combine', {
+        MultiplyOperation: THREE.MultiplyOperation,
+        MixOperation: THREE.MixOperation,
+        AddOperation: THREE.AddOperation
+    });
 }
 
 const main = () => {
@@ -122,12 +128,14 @@ const main = () => {
         } else if (controls.envMap == 1) {
             material.envMap = reflectionCube;
         }
-        material.needsUpdate = true;
 
         material.wireframe = controls.wireframe;
         material.reflectivity = controls.reflectivity;
         material.refractionRatio = controls.refractionRatio;
-        material.combine = controls.combine;
+        material.combine = parseInt(controls.combine);
+
+        material.needsUpdate = true;
+        
         camera.position.x = controls.cameraX;
         camera.position.y = controls.cameraY;
         camera.position.z = controls.cameraZ;
