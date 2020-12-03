@@ -119,8 +119,8 @@ function Control(material){
         customBlendingOptionsFolderContext.hide();
         customBlendingOptionsFolderContext.close();
         material.add(this, 'alphaTest', 0.0, 1.0, 0.01).listen();
-        material.add(this, 'clipIntersection').listen();
-        material.add(this, 'clipShadows').listen();
+        // material.add(this, 'clipIntersection').listen();
+        // material.add(this, 'clipShadows').listen();
         material.add(this, 'colorWrite').listen();
         material.add(this, 'depthFunc', {
             LessEqual               :THREE.LessEqualDepth,
@@ -191,7 +191,7 @@ function Control(material){
         // polygonOffsetOptionsFolderContext.add(this.polygonOffsetOptions, 'polygonOffsetUnits', -10, 10).listen();
         // polygonOffsetOptionsFolderContext.hide();
         // polygonOffsetOptionsFolderContext.close();
-        material.add(this, 'premultipliedAlpha').listen();
+        // material.add(this, 'premultipliedAlpha').listen();
         // material.add(this, 'dithering').listen();
         material.add(this, 'shadowSide', {
             Null                    :null,
