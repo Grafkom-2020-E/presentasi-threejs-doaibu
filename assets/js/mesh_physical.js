@@ -16,7 +16,6 @@ const controls = {
     roughnessMap: 0,
     wireframe: false,
     flatShading: false,
-    combine: THREE.MultiplyOperation,
 }
 
 const addGuiMeshBasic = (controls) => {
@@ -41,12 +40,12 @@ const addGuiMeshBasic = (controls) => {
 
     gui.add(controls, 'map', {
         None: 0,
-        Dissolve: 1,
+        Brick: 1,
     });
     
     gui.add(controls, 'roughnessMap', {
         None: 0,
-        Dissolve: 1,
+        Brick: 1,
     });
 
     gui.add(controls, 'wireframe');
@@ -143,11 +142,12 @@ const main = () => {
         } else if (controls.roughnessMap == 1) {
             material.roughnessMap = brick_roughness;
         }
-        material.needsUpdate = true;
         
         material.flatShading = controls.flatShading;
         material.wireframe = controls.wireframe;
-        material.combine = controls.combine;
+
+        material.needsUpdate = true;
+        
         camera.position.x = controls.cameraX;
         camera.position.y = controls.cameraY;
         camera.position.z = controls.cameraZ;
